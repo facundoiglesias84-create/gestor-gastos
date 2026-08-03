@@ -1,0 +1,342 @@
+:root[data-theme="dark"] {
+  --bg-primary: #000000; /* Negro absoluto estilo iOS OLED Dark Mode */
+  --bg-secondary: #1c1c1e;
+  --bg-card: #1c1c1e;
+  --bg-card-hover: #2c2c2e;
+  --border-color: #2c2c2e;
+  --text-primary: #ffffff;
+  --text-secondary: #aeaeb2;
+  --text-muted: #636366;
+  --accent-primary: #0a84ff; /* iOS System Blue */
+  --accent-primary-hover: #0071e3;
+  --accent-secondary: #30d158; /* iOS System Green */
+  --accent-secondary-bg: rgba(48, 209, 88, 0.15);
+  --accent-warning: #ff9f0a; /* iOS System Orange */
+  --accent-warning-bg: rgba(255, 159, 10, 0.15);
+  --accent-danger: #ff453a; /* iOS System Red */
+  --accent-danger-bg: rgba(255, 69, 58, 0.15);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
+  --shadow-md: 0 12px 30px rgba(0,0,0,0.7);
+  --glass-bg: rgba(28, 28, 30, 0.82);
+  --input-bg: #2c2c2e;
+}
+
+:root[data-theme="light"] {
+  --bg-primary: #f2f2f7; /* iOS System Gray 6 */
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f2f2f7;
+  --border-color: #e5e5ea;
+  --text-primary: #000000;
+  --text-secondary: #6c6c70;
+  --text-muted: #8e8e93;
+  --accent-primary: #007aff; /* iOS System Blue Light */
+  --accent-primary-hover: #0056b3;
+  --accent-secondary: #34c759; /* iOS System Green Light */
+  --accent-secondary-bg: rgba(52, 199, 89, 0.12);
+  --accent-warning: #ff9500;
+  --accent-warning-bg: rgba(255, 149, 0, 0.12);
+  --accent-danger: #ff3b30;
+  --accent-danger-bg: rgba(255, 59, 48, 0.12);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md: 0 10px 25px rgba(0,0,0,0.08);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --input-bg: #e5e5ea;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Plus Jakarta Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  /* Espacio seguro para notch e indicador inferior de iPhone (Safe Area Insets) */
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  overscroll-behavior-y: none;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Scrollbar estilo iOS */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 99px;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+@media (min-width: 900px) {
+  .app-container {
+    max-width: 950px;
+    padding: 24px 32px;
+  }
+}
+
+/* Header iOS translucido con blur */
+.header-glass {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 0.5px solid var(--border-color);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Tab Bar nativo de iOS con barra home de iPhone */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(65px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-top: 0.5px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 50;
+}
+
+@media (min-width: 768px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* Botón Flotante Acción Principal (FAB) estilo iOS */
+.fab-button {
+  position: fixed;
+  bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+  right: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), #38bdf8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 8px 25px rgba(10, 132, 255, 0.45);
+  cursor: pointer;
+  z-index: 45;
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fab-button:active {
+  transform: scale(0.9);
+}
+
+@media (min-width: 768px) {
+  .fab-button {
+    bottom: 35px;
+    right: 35px;
+    width: 62px;
+    height: 62px;
+  }
+}
+
+/* Tarjetas Estilo iOS (Esquinas redondeadas 22px) */
+.card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-color);
+  border-radius: 22px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.card:active {
+  transform: scale(0.99);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.badge-card {
+  background: rgba(10, 132, 255, 0.15);
+  color: var(--accent-primary);
+  border: 0.5px solid rgba(10, 132, 255, 0.3);
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+/* Botones con respuesta táctil iOS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border: 0.5px solid var(--border-color);
+}
+
+.btn-danger {
+  background: var(--accent-danger-bg);
+  color: var(--accent-danger);
+}
+
+/* Forms estilo iOS */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--input-bg);
+  border: 0.5px solid var(--border-color);
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--accent-primary);
+}
+
+/* Modal Bottom Sheet estilo iOS (Curva oficial de animaciones Apple) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .modal-overlay {
+    align-items: center;
+    padding: 20px;
+  }
+}
+
+.modal-content {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 500px;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  padding: 24px;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 0.5px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  animation: slideUpIOS 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (min-width: 640px) {
+  .modal-content {
+    border-radius: 28px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpIOS {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Progress bar estilo iOS */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: var(--input-bg);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
