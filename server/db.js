@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connectionString = process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL || 'postgresql://xata:TLUgqZPivk0btPEM8gTFtx2msl4W53jHadpKZMh5PLDvVz0tTFEM9mfISIU1UusB@h42kjm90qp7v98e0eck13kqk0s.us-east-1.xata.tech/postgres?sslmode=require';
 
 export const pool = new Pool({
   connectionString,
@@ -16,7 +16,7 @@ export const pool = new Pool({
 export async function initDb() {
   const client = await pool.connect();
   try {
-    console.log('⚡ Conectando a PostgreSQL...');
+    console.log('⚡ Conectando a PostgreSQL Xata...');
     
     // Tabla Usuarios
     await client.query(`
@@ -76,9 +76,9 @@ export async function initDb() {
       ALTER TABLE expenses ADD COLUMN IF NOT EXISTS parent_expense_id INTEGER NULL;
     `);
 
-    console.log('✅ Tablas y columnas (Soporte Mes Vencido) verificadas en PostgreSQL.');
+    console.log('✅ Tablas y columnas de Xata PostgreSQL verificadas.');
   } catch (error) {
-    console.error('❌ Error al inicializar las tablas:', error);
+    console.error('❌ Error al inicializar las tablas en Xata:', error);
   } finally {
     client.release();
   }
