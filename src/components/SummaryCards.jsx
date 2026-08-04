@@ -106,7 +106,7 @@ export default function SummaryCards({ monthlyIncome, totalExpenses, selectedMon
             <div style={{ background: 'var(--accent-secondary-bg)', padding: '6px', borderRadius: '8px' }}>
               <ArrowUpCircle size={18} color="var(--accent-secondary)" />
             </div>
-            <span style={{ fontSize: '0.78rem', 700: 700, color: 'var(--text-secondary)' }}>INGRESOS</span>
+            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-secondary)' }}>INGRESOS</span>
           </div>
           <p style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--accent-secondary)' }}>
             {formatCurrency(totalIncome)}
