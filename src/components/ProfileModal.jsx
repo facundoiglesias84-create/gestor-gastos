@@ -51,7 +51,7 @@ export default function ProfileModal({ isOpen, onClose, user, currentIncome, sel
           </button>
         </div>
 
-        {/* Nota informativa de que no altera el historial previo */}
+        {/* Nota informativa */}
         <div style={{
           background: 'rgba(99, 102, 241, 0.1)',
           border: '1px solid rgba(99, 102, 241, 0.25)',
@@ -89,8 +89,8 @@ export default function ProfileModal({ isOpen, onClose, user, currentIncome, sel
             </div>
           </div>
 
-          {/* Info Aguinaldo Estimado */}
-          {(selectedMonth === 7 || selectedMonth === 12) && (
+          {/* Info Aguinaldo Estimado en Junio y Diciembre */}
+          {(selectedMonth === 6 || selectedMonth === 12) && (
             <div style={{
               background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1))',
               border: '1px dashed #f59e0b',

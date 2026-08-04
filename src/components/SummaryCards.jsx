@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowDownCircle, ArrowUpCircle, DollarSign, Gift, Edit2 } from 'lucide-react';
 
 export default function SummaryCards({ monthlyIncome, totalExpenses, selectedMonth, onOpenProfile }) {
-  const isAguinaldoMonth = selectedMonth === 7 || selectedMonth === 12;
+  const isAguinaldoMonth = selectedMonth === 6 || selectedMonth === 12;
   const aguinaldoAmount = isAguinaldoMonth ? monthlyIncome * 0.5 : 0;
   const totalIncome = monthlyIncome + aguinaldoAmount;
   const balance = totalIncome - totalExpenses;
@@ -40,7 +40,7 @@ export default function SummaryCards({ monthlyIncome, totalExpenses, selectedMon
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#f59e0b' }}>
-                ¡Mes de Aguinaldo ({selectedMonth === 7 ? '1° Cuota - Julio' : '2° Cuota - Diciembre'})!
+                ¡Mes de Aguinaldo ({selectedMonth === 6 ? '1° Cuota - Junio' : '2° Cuota - Diciembre'})!
               </h4>
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
@@ -106,7 +106,7 @@ export default function SummaryCards({ monthlyIncome, totalExpenses, selectedMon
             <div style={{ background: 'var(--accent-secondary-bg)', padding: '6px', borderRadius: '8px' }}>
               <ArrowUpCircle size={18} color="var(--accent-secondary)" />
             </div>
-            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-secondary)' }}>INGRESOS</span>
+            <span style={{ fontSize: '0.78rem', 700: 700, color: 'var(--text-secondary)' }}>INGRESOS</span>
           </div>
           <p style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--accent-secondary)' }}>
             {formatCurrency(totalIncome)}

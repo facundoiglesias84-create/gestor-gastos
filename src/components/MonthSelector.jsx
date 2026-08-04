@@ -7,8 +7,8 @@ const MONTHS = [
   { id: 3, name: 'Marzo', short: 'Mar' },
   { id: 4, name: 'Abril', short: 'Abr' },
   { id: 5, name: 'Mayo', short: 'May' },
-  { id: 6, name: 'Junio', short: 'Jun' },
-  { id: 7, name: 'Julio', short: 'Jul', hasAguinaldo: true },
+  { id: 6, name: 'Junio', short: 'Jun', hasAguinaldo: true },
+  { id: 7, name: 'Julio', short: 'Jul' },
   { id: 8, name: 'Agosto', short: 'Ago' },
   { id: 9, name: 'Septiembre', short: 'Sep' },
   { id: 10, name: 'Octubre', short: 'Oct' },
@@ -19,7 +19,7 @@ const MONTHS = [
 export default function MonthSelector({ selectedYear, selectedMonth, onSelectMonth, onSelectYear }) {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1; // 1-12
+  const currentMonth = currentDate.getMonth() + 1;
 
   const handlePrevMonth = () => {
     if (selectedMonth === 1) {
@@ -41,7 +41,7 @@ export default function MonthSelector({ selectedYear, selectedMonth, onSelectMon
 
   return (
     <div className="card" style={{ padding: '16px 20px', marginBottom: '24px', background: 'var(--bg-card)' }}>
-      {/* Fila Superior: Selector de Mes Principal + Navegación */}
+      {/* Fila Superior */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -50,7 +50,7 @@ export default function MonthSelector({ selectedYear, selectedMonth, onSelectMon
         paddingBottom: '14px',
         borderBottom: '1px solid var(--border-color)'
       }}>
-        {/* Lado Izquierdo: Nombre del Mes y Estado */}
+        {/* Lado Izquierdo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div style={{
             background: 'rgba(99, 102, 241, 0.15)',
@@ -81,7 +81,7 @@ export default function MonthSelector({ selectedYear, selectedMonth, onSelectMon
           </div>
         </div>
 
-        {/* Lado Derecho: Controles de Año y Flechas */}
+        {/* Lado Derecho */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <button
             onClick={handlePrevMonth}
@@ -114,7 +114,7 @@ export default function MonthSelector({ selectedYear, selectedMonth, onSelectMon
         </div>
       </div>
 
-      {/* Grid Elegante de 12 Meses Integrado a todo el ancho */}
+      {/* Grid de 12 Meses */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(12, 1fr)',
